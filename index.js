@@ -25,3 +25,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("joke").innerHTML = jokeGenerator();
     document.getElementById("message").innerHTML = dateGenerator();
 });
+
+function forceContentChange() {
+    document.getElementById("joke").innerHTML = jokeGenerator();
+    document.getElementById("message").innerHTML = dateGenerator();
+}
