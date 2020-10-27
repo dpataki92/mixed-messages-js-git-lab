@@ -11,8 +11,17 @@ const jokes = ["I used to have a job at a calendar factory but I got the sack be
 
 function jokeGenerator() {
     const randomJoke = jokes[Math.floor(Math.random() * jokes.length)]
-    const dateAndTime = new Date().toString().slice(0, 21)
 
-    return [randomJoke, dateAndTime]
+    return randomJoke
 }
 
+function dateGenerator() {
+    const dateAndTime = new Date().toString().slice(0, 24)
+
+    return `The joke of the second (${dateAndTime}):`
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById("joke").innerHTML = jokeGenerator();
+    document.getElementById("message").innerHTML = dateGenerator();
+});
