@@ -21,12 +21,34 @@ function dateGenerator() {
     return `The joke of the second (${dateAndTime}):`
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById("joke").innerHTML = jokeGenerator();
-    document.getElementById("message").innerHTML = dateGenerator();
-});
+window.addEventListener('DOMContentLoaded', (e) => {
+    
+    function changeJokeAndTime () {
+        document.getElementById("joke").innerHTML = jokeGenerator();
+        document.getElementById("message").innerHTML = dateGenerator();
+    }
+
+    changeJokeAndTime()
+
+    let myInterval = setInterval(() => {
+        changeJokeAndTime();
+    }, 1000);
+
+    document.getElementById("automatic").addEventListener("click", (e) => {
+        if (e.target.innerHTML === "Stop Generator") {
+            clearInterval(myInterval);
+            e.target.innerHTML = "Launch Generator"
+        } else {
+            e.target.innerHTML = "Stop Generator"
+            myInterval = setInterval(() => {
+                changeJokeAndTime();
+            }, 1000);
+        }
+    }
+)});
 
 function forceContentChange() {
     document.getElementById("joke").innerHTML = jokeGenerator();
     document.getElementById("message").innerHTML = dateGenerator();
 }
+
